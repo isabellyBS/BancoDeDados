@@ -1,8 +1,7 @@
 # BancoDeDados
 
-https://app.brmodeloweb.com/#!/publicview/69b297a225dde5c84617f61b
 
-### MER, Modelo EntidadeRelacionamento dfkjsfjkdk
+### Atividade de modelagem
 
 ## Imobiliária
 * https://app.brmodeloweb.com/#!/publicview/69b297a225dde5c84617f61b

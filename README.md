@@ -15,5 +15,5 @@
 * Filmes lógica:
 
 ## Veterinária
-* Veterinária conceitual: 
-* Veterinária lógica:
+* Veterinária conceitual: https://app.brmodeloweb.com/#!/publicview/69e01feee7f0a96088a48be3
+* Veterinária lógica: https://app.brmodeloweb.com/#!/publicview/69e020e6e7f0a96088a48c81

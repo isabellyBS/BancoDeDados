@@ -12,7 +12,7 @@
 
 ## Filmes
 * Filmes conceitual: https://app.brmodeloweb.com/#!/publicview/69d7c4c1e56bc192cf505e25
-* Filmes lógica:
+* Filmes lógica: https://app.brmodeloweb.com/#!/publicview/69e021fde7f0a96088a48d6a
 
 ## Veterinária
 * Veterinária conceitual: https://app.brmodeloweb.com/#!/publicview/69e01feee7f0a96088a48be3

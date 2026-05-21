@@ -12,7 +12,7 @@ CREATE TABLE tatuador
 CREATE TABLE senioridade 
 ( 
  codSenioridade INT AUTO_INCREMENT PRIMARY KEY,  
- nome INT NOT NULL
+ nome VARCHAR(100) NOT NULL
 ); 
 
 CREATE TABLE agendamento 
@@ -20,12 +20,12 @@ CREATE TABLE agendamento
  idAgendamento INT AUTO_INCREMENT PRIMARY KEY,  
  idtatuador INT AUTO_INCREMENT PRIMARY KEY,  
  idcliente INT AUTO_INCREMENT PRIMARY KEY,  
- status INT NOT NULL,
- valorTatuagem INT NOT NULL,  
- dataAgendamento INT NOT NULL,  
- horaAgendamento INT NOT NULL,  
- desenhoAprovado INT NOT NULL,  
- descricaoTatuagem INT NOT NULL
+ status INT NOT NULL,  ??
+ valorTatuagem DECIMAL(6,2) NOT NULL,  
+ dataAgendamento DATE NOT NULL,  
+ horaAgendamento TIME NOT NULL,  
+ desenhoAprovado  NOT NULL,  ???
+ descricaoTatuagem VARCHAR(300) NOT NULL
 ); 
 
 CREATE TABLE cliente 
@@ -33,7 +33,7 @@ CREATE TABLE cliente
  idCliente INT AUTO_INCREMENT PRIMARY KEY,  
  telefone INT NOT NULL,  
  nome INT NOT NULL,  
- cpf INT NOT NULL,  
+ cpf CHAR(11) NOT NULL UNIQUE,
  dataCadastro INT NOT NULL,  
  cidade INT NOT NULL,  
  uf INT NOT NULL

@@ -1,55 +1,55 @@
 CREATE TABLE tatuador 
 ( 
- idTatuador INT PRIMARY KEY,  
- idsenioridade INT,  
+ idTatuador INT AUTO_INCREMENT PRIMARY KEY,  
+ idsenioridade INT AUTO_INCREMENT PRIMARY KEY,  
  telefone INT,  
  nomeTatuador INT,  
  cpf INT,  
  dataContratacao INT,  
- email INT,  
+ email INT
 ); 
 
 CREATE TABLE senioridade 
 ( 
- codSenioridade INT PRIMARY KEY,  
- nome INT,  
+ codSenioridade INT AUTO_INCREMENT PRIMARY KEY,  
+ nome INT
 ); 
 
 CREATE TABLE agendamento 
 ( 
- idAgendamento INT PRIMARY KEY,  
- idtatuador INT,  
- idcliente INT,  
+ idAgendamento INT AUTO_INCREMENT PRIMARY KEY,  
+ idtatuador INT AUTO_INCREMENT PRIMARY KEY,  
+ idcliente INT AUTO_INCREMENT PRIMARY KEY,  
  status INT,  
  valorTatuagem INT,  
  dataAgendamento INT,  
  horaAgendamento INT,  
  desenhoAprovado INT,  
- descricaoTatuagem INT,  
+ descricaoTatuagem INT
 ); 
 
 CREATE TABLE cliente 
 ( 
- idCliente INT PRIMARY KEY,  
+ idCliente INT AUTO_INCREMENT PRIMARY KEY,  
  telefone INT,  
  nome INT,  
  cpf INT,  
  dataCadastro INT,  
  cidade INT,  
- uf INT,  
+ uf INT
 ); 
 
 CREATE TABLE estilo 
 ( 
- idEstilo INT PRIMARY KEY,  
- Estilo INT,  
+ idEstilo INT AUTO_INCREMENT PRIMARY KEY,  
+ Estilo INT
 ); 
 
 CREATE TABLE possui 
 ( 
- idTatuador INT PRIMARY KEY,  
- idEstilo INT PRIMARY KEY,  
- dataEstilo INT,  
+ idTatuador INT AUTO_INCREMENT PRIMARY KEY,  
+ idEstilo INT AUTO_INCREMENT PRIMARY KEY,  
+ dataEstilo INT
 ); 
 
 ALTER TABLE tatuador ADD FOREIGN KEY(idsenioridade) REFERENCES senioridade (idsenioridade)

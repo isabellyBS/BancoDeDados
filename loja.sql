@@ -26,10 +26,10 @@ USE `loja`;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `categoria`
+-- Estrutura da tabela `categorias`
 --
 
-CREATE TABLE `categoria` (
+CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `categoria` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -55,9 +55,9 @@ CREATE TABLE `produtos` (
 --
 
 --
--- Índices para tabela `categoria`
+-- Índices para tabela `categorias`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
@@ -72,9 +72,9 @@ ALTER TABLE `produtos`
 --
 
 --
--- AUTO_INCREMENT de tabela `categoria`
+-- AUTO_INCREMENT de tabela `categorias`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -91,7 +91,7 @@ ALTER TABLE `produtos`
 -- Limitadores para a tabela `produtos`
 --
 ALTER TABLE `produtos`
-  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`);
+  ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

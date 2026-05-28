@@ -20,36 +20,36 @@ CREATE TABLE agendamento
  idAgendamento INT AUTO_INCREMENT PRIMARY KEY,  
  idtatuador INT AUTO_INCREMENT PRIMARY KEY,  
  idcliente INT AUTO_INCREMENT PRIMARY KEY,  
- status INT NOT NULL,  ??
+ status VARCHAR(11) NOT NULL,
  valorTatuagem DECIMAL(6,2) NOT NULL,  
  dataAgendamento DATE NOT NULL,  
  horaAgendamento TIME NOT NULL,  
- desenhoAprovado  NOT NULL,  ???
+ desenhoAprovado  VARCHAR(100) NULL,  -- por link da img(?)
  descricaoTatuagem VARCHAR(300) NOT NULL
 ); 
 
 CREATE TABLE cliente 
 ( 
  idCliente INT AUTO_INCREMENT PRIMARY KEY,  
- telefone INT NOT NULL,  
- nome INT NOT NULL,  
+ telefone VARCHAR(20) NOT NULL,  
+ nome VARCHAR(100) NOT NULL,  
  cpf CHAR(11) NOT NULL UNIQUE,
- dataCadastro INT NOT NULL,  
- cidade INT NOT NULL,  
- uf INT NOT NULL
+ dataCadastro DATE NOT NULL,  
+ cidade VARCHAR(58) NOT NULL,  
+ uf VARCHAR(15) NOT NULL
 ); 
 
 CREATE TABLE estilo 
 ( 
  idEstilo INT AUTO_INCREMENT PRIMARY KEY,  
- Estilo INT NOT NULL
+ Estilo VARCHAR(20) NOT NULL
 ); 
 
 CREATE TABLE possui 
 ( 
  idTatuador INT AUTO_INCREMENT PRIMARY KEY,  
  idEstilo INT AUTO_INCREMENT PRIMARY KEY,  
- dataEstilo INT NOT NULL
+ dataEstilo DATE NOT NULL
 ); 
 
 ALTER TABLE tatuador ADD FOREIGN KEY(idsenioridade) REFERENCES senioridade (idsenioridade)
@@ -58,5 +58,3 @@ ALTER TABLE agendamento ADD FOREIGN KEY(idcliente) REFERENCES cliente (idcliente
 ALTER TABLE possui ADD FOREIGN KEY(idTatuador) REFERENCES tatuador (idTatuador)
 ALTER TABLE possui ADD FOREIGN KEY(idEstilo) REFERENCES estilo (idEstilo)
 
-
-#*(a arrumar)*

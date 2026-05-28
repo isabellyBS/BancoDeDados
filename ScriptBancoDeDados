@@ -24,7 +24,7 @@ CREATE TABLE agendamento
  valorTatuagem DECIMAL(6,2) NOT NULL,  
  dataAgendamento DATE NOT NULL,  
  horaAgendamento TIME NOT NULL,  
- desenhoAprovado  VARCHAR(100) NULL,  -- por link da img(?)
+ desenhoAprovado  VARCHAR(100) NULL, 
  descricaoTatuagem VARCHAR(300) NOT NULL
 ); 
 

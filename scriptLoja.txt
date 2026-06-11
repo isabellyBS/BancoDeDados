@@ -219,20 +219,39 @@ MariaDB [loja]> describe produtos;
 +--------------+---------------+------+-----+---------+----------------+
 8 rows in set (0.022 sec)
 
-MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria, datacadastro) values
-    -> ('Manga Palmer', 7.oo, 500, 'O Agricultor', 5, 28/05/2026),
-    -> ('Camisa branca P', 50.oo, 200, 'x', 2, 28/05/2026);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'oo, 500, 'O Agricultor', 5, 28/05/2026),
-('Camisa branca P', 50.oo, 200, 'x',...' at line 2
-MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria, datacadastro) values
-    -> ('Manga Palmer', 7.oo, 500, 'O Agricultor', 5, 28/05/2026),
-    -> ('Camisa branca P', 50, 200, 'x', 2, 28/05/2026);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'oo, 500, 'O Agricultor', 5, 28/05/2026),
-('Camisa branca P', 50, 200, 'x', 2,...' at line 2
-MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, id_categoria, datacadastro) values
-    -> ('Manga Palmer', 7.oo, 500, 'O Agricultor', 5, 28/05/2026);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'oo, 500, 'O Agricultor', 5, 28/05/2026)' at line 2
-MariaDB [loja]> Bye
-Ctrl-C -- exit!
+MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, observacoes, id_categoria, datacadastro) values
+    -> ('Manga Palmer', 5.00, 30, 'horta do zé', 'Preço e quantidade por kg', 5, '2026-06-11');
+Query OK, 1 row affected (0.013 sec)
 
-C:\xampp\mysql\bin>
+MariaDB [loja]> insert into produtos (nome, preco, quantidade, marca, observacoes, id_categoria, datacadastro) values
+    -> ('Palha de aço', 2.00, 50, 'BomBril', '', 4, '2026-06-11'),
+    -> ('Coração de galinha', 20.00, 30, 'Seara', 'Preço e quantidade por kg', 6, '2026-06-11'),
+    -> ('Filé de frago', 20.00, 80, 'Seara', 'Preço e quantidade por kg', 6, '2026-06-11'),
+    -> ('Fone sem fio', 100.00, 15, 'Realme', '', 1, '2026-06-11'),
+    -> ('Sabão em pó', 14.00, 50, 'Omo', '', 4, '2026-06-11'),
+    -> ('Desinfetante', 7.00, 50, 'UAU', '', 4, '2026-06-11'),
+    -> ('Máquina de costura', 300.00, 10, 'Singer', '', 1, '2026-06-11'),
+    -> ('Par de luva sem dedo', 7.00, 20, 'Não tem', '', 2, '2026-06-11'),
+    -> ('Par de meia', 2.50, 50, 'Não tem', '', 2, '2026-06-11');
+Query OK, 9 rows affected (0.016 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+MariaDB [loja]> select * from produtos
+    -> ;
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+| id_produto | nome                 | preco  | quantidade | marca       | observacoes               | id_categoria | datacadastro |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+|          1 | Manga Palmer         |   5.00 |         30 | horta do zé | Preço e quantidade por kg |            5 | 2026-06-11   |
+|          2 | Palha de aço         |   2.00 |         50 | BomBril     |                           |            4 | 2026-06-11   |
+|          3 | Coração de galinha   |  20.00 |         30 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          4 | Filé de frago        |  20.00 |         80 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          5 | Fone sem fio         | 100.00 |         15 | Realme      |                           |            1 | 2026-06-11   |
+|          6 | Sabão em pó          |  14.00 |         50 | Omo         |                           |            4 | 2026-06-11   |
+|          7 | Desinfetante         |   7.00 |         50 | UAU         |                           |            4 | 2026-06-11   |
+|          8 | Máquina de costura   | 300.00 |         10 | Singer      |                           |            1 | 2026-06-11   |
+|          9 | Par de luva sem dedo |   7.00 |         20 | Não tem     |                           |            2 | 2026-06-11   |
+|         10 | Par de meia          |   2.50 |         50 | Não tem     |                           |            2 | 2026-06-11   |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+10 rows in set (0.001 sec)
+
+MariaDB [loja]>

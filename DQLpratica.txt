@@ -1,0 +1,183 @@
+MariaDB [(none)]> use loja
+Database changed
+MariaDB [loja]> show tables
+    -> ;
++----------------+
+| Tables_in_loja |
++----------------+
+| categorias     |
+| produtos       |
++----------------+
+2 rows in set (0.001 sec)
+
+MariaDB [loja]> describe categorias;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id_categoria | int(11)      | NO   | PRI | NULL    | auto_increment |
+| categoria    | varchar(255) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+2 rows in set (0.014 sec)
+
+MariaDB [loja]> describe produtos;
++--------------+---------------+------+-----+---------+----------------+
+| Field        | Type          | Null | Key | Default | Extra          |
++--------------+---------------+------+-----+---------+----------------+
+| id_produto   | int(11)       | NO   | PRI | NULL    | auto_increment |
+| nome         | varchar(255)  | NO   |     | NULL    |                |
+| preco        | decimal(10,2) | NO   |     | NULL    |                |
+| quantidade   | int(11)       | NO   |     | NULL    |                |
+| marca        | varchar(255)  | NO   |     | NULL    |                |
+| observacoes  | varchar(255)  | YES  |     | NULL    |                |
+| id_categoria | int(11)       | YES  | MUL | NULL    |                |
+| datacadastro | date          | NO   |     | NULL    |                |
++--------------+---------------+------+-----+---------+----------------+
+8 rows in set (0.020 sec)
+
+MariaDB [loja]> select * from produtos;
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+| id_produto | nome                 | preco  | quantidade | marca       | observacoes               | id_categoria | datacadastro |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+|          1 | Manga Palmer         |   5.00 |         30 | horta do zé | Preço e quantidade por kg |            5 | 2026-06-11   |
+|          2 | Palha de aço         |   2.00 |         50 | BomBril     |                           |            4 | 2026-06-11   |
+|          3 | Coração de galinha   |  20.00 |         30 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          4 | Filé de frago        |  20.00 |         80 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          5 | Fone sem fio         | 100.00 |         15 | Realme      |                           |            1 | 2026-06-11   |
+|          6 | Sabão em pó          |  14.00 |         50 | Omo         |                           |            4 | 2026-06-11   |
+|          7 | Desinfetante         |   7.00 |         50 | UAU         |                           |            4 | 2026-06-11   |
+|          8 | Máquina de costura   | 300.00 |         10 | Singer      |                           |            1 | 2026-06-11   |
+|          9 | Par de luva sem dedo |   7.00 |         20 | Não tem     |                           |            2 | 2026-06-11   |
+|         10 | Par de meia          |   2.50 |         50 | Não tem     |                           |            2 | 2026-06-11   |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+10 rows in set (0.001 sec)
+
+MariaDB [loja]> select nome, preco, id_categoria from produtos;
++----------------------+--------+--------------+
+| nome                 | preco  | id_categoria |
++----------------------+--------+--------------+
+| Manga Palmer         |   5.00 |            5 |
+| Palha de aço         |   2.00 |            4 |
+| Coração de galinha   |  20.00 |            6 |
+| Filé de frago        |  20.00 |            6 |
+| Fone sem fio         | 100.00 |            1 |
+| Sabão em pó          |  14.00 |            4 |
+| Desinfetante         |   7.00 |            4 |
+| Máquina de costura   | 300.00 |            1 |
+| Par de luva sem dedo |   7.00 |            2 |
+| Par de meia          |   2.50 |            2 |
++----------------------+--------+--------------+
+10 rows in set (0.001 sec)
+
+MariaDB [loja]> selet * from produtos where marca="Não tem";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selet * from produtos where marca="Não tem"' at line 1
+MariaDB [loja]> select * from produtos where marca="Não tem";
++------------+----------------------+-------+------------+---------+-------------+--------------+--------------+
+| id_produto | nome                 | preco | quantidade | marca   | observacoes | id_categoria | datacadastro |
++------------+----------------------+-------+------------+---------+-------------+--------------+--------------+
+|          9 | Par de luva sem dedo |  7.00 |         20 | Não tem |             |            2 | 2026-06-11   |
+|         10 | Par de meia          |  2.50 |         50 | Não tem |             |            2 | 2026-06-11   |
++------------+----------------------+-------+------------+---------+-------------+--------------+--------------+
+2 rows in set (0.001 sec)
+
+MariaDB [loja]> select * from produto where preco > 99.99;
+ERROR 1146 (42S02): Table 'loja.produto' doesn't exist
+MariaDB [loja]> select * from produtos where preco > 99.99;
++------------+--------------------+--------+------------+--------+-------------+--------------+--------------+
+| id_produto | nome               | preco  | quantidade | marca  | observacoes | id_categoria | datacadastro |
++------------+--------------------+--------+------------+--------+-------------+--------------+--------------+
+|          5 | Fone sem fio       | 100.00 |         15 | Realme |             |            1 | 2026-06-11   |
+|          8 | Máquina de costura | 300.00 |         10 | Singer |             |            1 | 2026-06-11   |
++------------+--------------------+--------+------------+--------+-------------+--------------+--------------+
+2 rows in set (0.001 sec)
+
+MariaDB [loja]> select * from produtos where quantidade <= 50;
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+| id_produto | nome                 | preco  | quantidade | marca       | observacoes               | id_categoria | datacadastro |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+|          1 | Manga Palmer         |   5.00 |         30 | horta do zé | Preço e quantidade por kg |            5 | 2026-06-11   |
+|          2 | Palha de aço         |   2.00 |         50 | BomBril     |                           |            4 | 2026-06-11   |
+|          3 | Coração de galinha   |  20.00 |         30 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          5 | Fone sem fio         | 100.00 |         15 | Realme      |                           |            1 | 2026-06-11   |
+|          6 | Sabão em pó          |  14.00 |         50 | Omo         |                           |            4 | 2026-06-11   |
+|          7 | Desinfetante         |   7.00 |         50 | UAU         |                           |            4 | 2026-06-11   |
+|          8 | Máquina de costura   | 300.00 |         10 | Singer      |                           |            1 | 2026-06-11   |
+|          9 | Par de luva sem dedo |   7.00 |         20 | Não tem     |                           |            2 | 2026-06-11   |
+|         10 | Par de meia          |   2.50 |         50 | Não tem     |                           |            2 | 2026-06-11   |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+9 rows in set (0.001 sec)
+
+MariaDB [loja]> select * from produtos where quantidade <= 50 order by quantidade asc;
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+| id_produto | nome                 | preco  | quantidade | marca       | observacoes               | id_categoria | datacadastro |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+|          8 | Máquina de costura   | 300.00 |         10 | Singer      |                           |            1 | 2026-06-11   |
+|          5 | Fone sem fio         | 100.00 |         15 | Realme      |                           |            1 | 2026-06-11   |
+|          9 | Par de luva sem dedo |   7.00 |         20 | Não tem     |                           |            2 | 2026-06-11   |
+|          1 | Manga Palmer         |   5.00 |         30 | horta do zé | Preço e quantidade por kg |            5 | 2026-06-11   |
+|          3 | Coração de galinha   |  20.00 |         30 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          2 | Palha de aço         |   2.00 |         50 | BomBril     |                           |            4 | 2026-06-11   |
+|          6 | Sabão em pó          |  14.00 |         50 | Omo         |                           |            4 | 2026-06-11   |
+|          7 | Desinfetante         |   7.00 |         50 | UAU         |                           |            4 | 2026-06-11   |
+|         10 | Par de meia          |   2.50 |         50 | Não tem     |                           |            2 | 2026-06-11   |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+9 rows in set (0.001 sec)
+
+MariaDB [loja]> select * from produtos  order by quantidade asc limit 5;
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+| id_produto | nome                 | preco  | quantidade | marca       | observacoes               | id_categoria | datacadastro |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+|          8 | Máquina de costura   | 300.00 |         10 | Singer      |                           |            1 | 2026-06-11   |
+|          5 | Fone sem fio         | 100.00 |         15 | Realme      |                           |            1 | 2026-06-11   |
+|          9 | Par de luva sem dedo |   7.00 |         20 | Não tem     |                           |            2 | 2026-06-11   |
+|          1 | Manga Palmer         |   5.00 |         30 | horta do zé | Preço e quantidade por kg |            5 | 2026-06-11   |
+|          3 | Coração de galinha   |  20.00 |         30 | Seara       | Preço e quantidade por kg |            6 | 2026-06-11   |
++------------+----------------------+--------+------------+-------------+---------------------------+--------------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [loja]> select * from produtos  order by preco desc limit 5;
++------------+--------------------+--------+------------+--------+---------------------------+--------------+--------------+
+| id_produto | nome               | preco  | quantidade | marca  | observacoes               | id_categoria | datacadastro |
++------------+--------------------+--------+------------+--------+---------------------------+--------------+--------------+
+|          8 | Máquina de costura | 300.00 |         10 | Singer |                           |            1 | 2026-06-11   |
+|          5 | Fone sem fio       | 100.00 |         15 | Realme |                           |            1 | 2026-06-11   |
+|          3 | Coração de galinha |  20.00 |         30 | Seara  | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          4 | Filé de frago      |  20.00 |         80 | Seara  | Preço e quantidade por kg |            6 | 2026-06-11   |
+|          6 | Sabão em pó        |  14.00 |         50 | Omo    |                           |            4 | 2026-06-11   |
++------------+--------------------+--------+------------+--------+---------------------------+--------------+--------------+
+5 rows in set (0.001 sec)
+
+MariaDB [loja]> select count(*) from produtos;
++----------+
+| count(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]> select count(*) as QtddDeProdutos from produtos;
++----------------+
+| QtddDeProdutos |
++----------------+
+|             10 |
++----------------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]> select avg(preco) as media-de-preco from produtos;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '-de-preco from produtos' at line 1
+MariaDB [loja]> select avg(preco) as media_de_preco from produtos;
++----------------+
+| media_de_preco |
++----------------+
+|      47.750000 |
++----------------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]> select nome, quantidade from produtos order by quantidade desc limit 1;
++---------------+------------+
+| nome          | quantidade |
++---------------+------------+
+| Filé de frago |         80 |
++---------------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [loja]>

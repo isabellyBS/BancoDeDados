@@ -181,3 +181,95 @@ MariaDB [loja]> select nome, quantidade from produtos order by quantidade desc l
 1 row in set (0.001 sec)
 
 MariaDB [loja]>
+
+// Transição para feito na escola e em casa
+
+mysql> select p.nome,   c.categoria from produtos p join categorias c on p.id_categoria = c.id_categoria;
++----------------------+-------------+
+| nome                 | categoria   |
++----------------------+-------------+
+| Manga Palmer         | Hortifuit   |
+| Palha de aço         | Limpeza     |
+| Coração de galinha   | Açougue     |
+| Filé de frago        | Açougue     |
+| Fone sem fio         | Eletrônicos |
+| Sabão em pó          | Limpeza     |
+| Desinfetante         | Limpeza     |
+| Máquina de costura   | Eletrônicos |
+| Par de luva sem dedo | Roupas      |
+| Par de meia          | Roupas      |
++----------------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select p.nome, p.preco, c.categoria from produtos p join categorias c on p.id_categoria = c.id_categoria where c.categoria = "Limpeza";
++--------------+-------+-----------+
+| nome         | preco | categoria |
++--------------+-------+-----------+
+| Palha de aço |  2.00 | Limpeza   |
+| Sabão em pó  | 14.00 | Limpeza   |
+| Desinfetante |  7.00 | Limpeza   |
++--------------+-------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select c.categoria, count(*) as qtd_produtos from produtos p join categorias c on p.id_categoria = c.id_categoria group by c.categoria;
++-------------+--------------+
+| categoria   | qtd_produtos |
++-------------+--------------+
+| Eletrônicos |            2 |
+| Roupas      |            2 |
+| Limpeza     |            3 |
+| Hortifuit   |            1 |
+| Açougue     |            2 |
++-------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from produtos
+    -> where preco between 4 and 8;
++------------+----------------------+-------+------------+-------------+---------------------------+--------------+--------------+
+| id_produto | nome                 | preco | quantidade | marca       | observacoes               | id_categoria | datacadastro |
++------------+----------------------+-------+------------+-------------+---------------------------+--------------+--------------+
+|          1 | Manga Palmer         |  5.00 |         30 | horta do zé | Preço e quantidade por kg |            5 | 2026-06-11   |
+|          7 | Desinfetante         |  7.00 |         50 | UAU         |                           |            4 | 2026-06-11   |
+|          9 | Par de luva sem dedo |  7.00 |         20 | Não tem     |                           |            2 | 2026-06-11   |
++------------+----------------------+-------+------------+-------------+---------------------------+--------------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select nome, preco from produtos
+    -> where nome like 'Pa%';
++----------------------+-------+
+| nome                 | preco |
++----------------------+-------+
+| Palha de aço         |  2.00 |
+| Par de luva sem dedo |  7.00 |
+| Par de meia          |  2.50 |
++----------------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select nome, preco from produtos
+    -> where nome like 'pA%';
++----------------------+-------+
+| nome                 | preco |
++----------------------+-------+
+| Palha de aço         |  2.00 |
+| Par de luva sem dedo |  7.00 |
+| Par de meia          |  2.50 |
++----------------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select nome, preco from produtos where nome like 'y%';
+Empty set (0.00 sec)
+
+mysql> select distinct marca from produtos;
++-------------+
+| marca       |
++-------------+
+| horta do zé |
+| BomBril     |
+| Seara       |
+| Realme      |
+| Omo         |
+| UAU         |
+| Singer      |
+| Não tem     |
++-------------+
+8 rows in set (0.00 sec)

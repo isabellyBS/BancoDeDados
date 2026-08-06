@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/07/2026 às 17:25
+-- Tempo de geração: 06/08/2026 às 17:16
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -63,6 +63,19 @@ CREATE TABLE `atendimentos` (
   `descricao` varchar(255) NOT NULL,
   `valor` decimal(7,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `atendimentos`
+--
+
+INSERT INTO `atendimentos` (`idAtendimento`, `idAnimal`, `idVeterinario`, `dataAtendimento`, `horaAtendimento`, `descricao`, `valor`) VALUES
+(1, 5, 1, '2026-08-06', '11:11:11', 'Foi feita a ressonância magnética e não há nenhuma comorbidade, cliente está apenas ibernando.', 303.99),
+(2, 3, 2, '2026-08-06', '11:15:45', 'Fora aplicada a vacina V10.', 200.02),
+(3, 4, 3, '2026-08-06', '12:12:12', 'Ao fazer o check-up foi encontrada uma ferida, em que fizemos o curativo.', 220.22),
+(4, 2, 1, '2026-08-07', '10:10:10', 'A ressonância magnética demonstrou um certo problema na articulação do ombro esquerdo.', 500.05),
+(5, 1, 2, '2026-08-03', '15:08:25', 'Dose de reforço da vacina antirrábica.', 180.00),
+(6, 4, 2, '2026-08-08', '08:08:08', 'Tomou a vacina da FeLV', 230.00),
+(7, 5, 3, '2026-08-06', '18:18:18', 'Nada demais.', 50.00);
 
 -- --------------------------------------------------------
 
@@ -159,7 +172,7 @@ ALTER TABLE `animais`
 -- AUTO_INCREMENT de tabela `atendimentos`
 --
 ALTER TABLE `atendimentos`
-  MODIFY `idAtendimento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAtendimento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`

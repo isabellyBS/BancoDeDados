@@ -34,6 +34,7 @@ CREATE TABLE `animais` (
   `idCliente` int(11) DEFAULT NULL,
   `nomeAnimal` varchar(255) NOT NULL,
   `especie` varchar(255) NOT NULL,
+  `raca` varchar(255) NOT NULL,
   `dataNascimento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,12 +42,12 @@ CREATE TABLE `animais` (
 -- Despejando dados para a tabela `animais`
 --
 
-INSERT INTO `animais` (`idAni`, `idCliente`, `nomeAnimal`, `especie`, `dataNascimento`) VALUES
-(1, 1, 'Valentina', 'Cachorro - Pinsher', '2014-10-02'),
-(2, 1, 'Shakira', 'Cachorro - Pastor alemão', '2019-09-29'),
-(3, 1, 'Hanna', 'Cachorro - Pastor alemão', '2012-07-23'),
-(4, 3, 'Johnny', 'Gato - RD', '2025-03-14'),
-(5, 2, 'Florzinha', 'Tartaruga - Jabuti', '2009-11-07');
+INSERT INTO `animais` (`idAni`, `idCliente`, `nomeAnimal`, `especie`, `raca`, `dataNascimento`) VALUES
+(1, 1, 'Valentina', 'Cachorro`, `Pinsher', '2014-10-02'),
+(2, 1, 'Shakira', 'Cachorro`, `Pastor alemão', '2019-09-29'),
+(3, 1, 'Hanna', 'Cachorro`, `Pastor alemão', '2012-07-23'),
+(4, 3, 'Johnny', 'Gato`, `RD', '2025-03-14'),
+(5, 2, 'Florzinha', 'Tartaruga`, `Jabuti', '2009-11-07');
 
 -- --------------------------------------------------------
 

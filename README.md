@@ -17,3 +17,15 @@
 ## Veterinária
 * Veterinária conceitual: https://app.brmodeloweb.com/#!/publicview/69e01feee7f0a96088a48be3
 * Veterinária lógica: https://app.brmodeloweb.com/#!/publicview/69e020e6e7f0a96088a48c81
+
+##Lava rápido
+*Lava rápido conceitual:
+https://app.brmodeloweb.com/publicview/6a8c3a1d358ae326bb4a0cc3
+*Lava rápido lógica:
+https://app.brmodeloweb.com/publicview/6a8c39ff358ae326bb4a0ca7
+
+##Restaurante
+*Restaurante conceitual:
+https://app.brmodeloweb.com/publicview/6a8c39d6358ae326bb4a0c7f
+*Restaurante lógica:
+https://app.brmodeloweb.com/publicview/6a8c39f0358ae326bb4a0c9c
